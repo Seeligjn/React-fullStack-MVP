@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-function Cart({ items }) {
+function Cart({ items, handleDeleteFromCart }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -30,7 +30,12 @@ function Cart({ items }) {
               {items.map((item, index) => (
                 <li key={index} className="li">
                   {item.artist_name} || {item.album_name}{" "}
-                  <Button variant="secondary" size="sm" className="delete-btn">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="delete-btn"
+                    onClick={() => handleDeleteFromCart(item.id)}
+                  >
                     X
                   </Button>
                 </li>
@@ -45,20 +50,3 @@ function Cart({ items }) {
 }
 
 export default Cart;
-
-// function Cart({ items }) {
-//   return (
-//     <div className="cart">
-//       <h2>Cart</h2>
-//       {items.length === 0 ? (
-//         <p>Your cart is empty.</p>
-//       ) : (
-//         <ul>
-//           {items.map((item, index) => (
-//             <li key={index}>{item.album_name}</li>
-//           ))}
-//         </ul>
-//       )}
-//     </div>
-//   );
-// }

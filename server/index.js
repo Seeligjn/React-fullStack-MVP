@@ -39,6 +39,22 @@ app.post("/api/cart", (req, res) => {
     });
 });
 
+app.delete("/api/cart/:id", (req, res) => {
+  const id = req.params.id;
+
+  sql`
+    DELETE FROM cart WHERE id = ${id}
+    RETURNING *
+  `
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

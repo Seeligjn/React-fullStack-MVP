@@ -44,6 +44,23 @@ function App() {
       });
   };
 
+  const handleDeleteFromCart = (id) => {
+    fetch(`/api/cart/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Deleted from cart:", data);
+        const updatedItems = items.filter((item) => item.id !== id);
+        setItems(updatedItems);
+        // Do something with the response if needed
+      })
+      .catch((error) => {
+        console.error("Error deleting from cart:", error);
+        // Handle the error if needed
+      });
+  };
+
   return (
     <div className="home-page">
       <Header />
@@ -51,7 +68,7 @@ function App() {
         <div className="music-container">
           <Records records={records} handleAddToCart={handleAddToCart} />
         </div>
-        <Cart items={items} />
+        <Cart items={items} handleDeleteFromCart={handleDeleteFromCart} />
       </div>
       <Footer />
     </div>
