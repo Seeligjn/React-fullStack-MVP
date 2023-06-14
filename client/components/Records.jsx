@@ -25,15 +25,12 @@ function Records({ records, handleAddToCart }) {
               bg="dark"
               text="white"
             >
-              <Card.Img
-                variant="top"
-                src="https://i.discogs.com/iqe7Q0IlZBcv-jeAD6lWS4iwRVaXUo9bFp_c-Ak1l5E/rs:fit/g:sm/q:90/h:450/w:450/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU5NTIx/ODEtMTQwNzIyMjY4/NC04MzY4LmpwZWc.jpeg"
-              />
+              <Card.Img variant="top" src={record.album_image} />
               <Card.Body>
                 <Card.Title>{record.artist_name}</Card.Title>
                 <div>{record.album_name}</div>
                 <div>
-                  <strong>Price:</strong> {record.price} |
+                  <strong>Price:</strong> ${record.price} |
                   <strong> Quantity: </strong>
                   {record.quantity}
                 </div>
