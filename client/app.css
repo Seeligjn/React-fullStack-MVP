@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
 }
 
@@ -20,4 +20,82 @@ body {
 
 .task > * + * {
   margin-left: 4px;
+} */
+
+.header {
+  align-self: stretch;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.footer {
+  font-size: 1.4rem;
+  text-align: center;
+  color: aliceblue;
+}
+
+body {
+  font-family: "Roboto Mono", sans-serif;
+  color: #020202;
+  font-weight: 400;
+  background-color: #514a55;
+  border-bottom: 1.6rem solid #514a55;
+  min-height: 100vh;
+}
+
+.music-container {
+  max-width: 80rem;
+  display: flex;
+  /* align-items: center; */
+  gap: 3rem;
+  color: aliceblue;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card {
+  margin: 20px;
+}
+
+.header {
+  color: white;
+}
+
+#root {
+  background-color: #252525;
+}
+
+.genre {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+/* .cart {
+  color: aliceblue;
+} */
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.delete-btn {
+  max-height: fit-content;
+}
+
+.li {
+  font-size: larger;
 }

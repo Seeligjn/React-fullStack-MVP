@@ -10,10 +10,33 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/api/tasks", (req, res) => {
-  sql`SELECT * FROM tasks`.then((rows) => {
+app.get("/api/records", (req, res) => {
+  sql`SELECT * FROM records`.then((rows) => {
     res.send(rows);
   });
+});
+
+app.get("/api/cart", (req, res) => {
+  sql`SELECT * FROM cart`.then((rows) => {
+    res.send(rows);
+  });
+});
+
+app.post("/api/cart", (req, res) => {
+  const { album_name, artist_name } = req.body;
+
+  sql`
+    INSERT INTO cart (album_name, artist_name)
+    VALUES (${album_name}, ${artist_name})
+    RETURNING *
+  `
+    .then((rows) => {
+      res.send(rows[0]);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
+    });
 });
 
 app.listen(PORT, () => {
